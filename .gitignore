@@ -8,3 +8,4 @@
 *.dat*
 .env
 *config.toml
+*tmp

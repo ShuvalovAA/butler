@@ -1,14 +1,14 @@
 from typing import override
+from functools import partial
 
+from aiogram import Bot, Dispatcher, F, Router
 from aiogram.client.session.aiohttp import AiohttpSession
-from aiogram import Bot, Dispatcher, Router
 from aiogram.filters import Command
 
-from pytest import Session
 from src.butler.types import TelegramCredetials
 
 from ..interface import IBotRunner
-from .commands import cmd_start, echo
+from .commands import cmd_start, handle_voice
 
 
 class TelegramBotRunner(IBotRunner):
@@ -26,7 +26,7 @@ class TelegramBotRunner(IBotRunner):
     def _register_handlers(self) -> None:
         router = Router()
         router.message.register(cmd_start, Command("start"))
-        router.message.register(echo)
+        router.message.register(handle_voice, F.voice | F.audio )
         self._dispatcher.include_router(router)
 
     @override
