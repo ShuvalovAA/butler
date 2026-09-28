@@ -1,0 +1,29 @@
+[project]
+name = "butler"
+version = "0.1.0"
+description = "Home assistent"
+readme = "README.md"
+authors = [
+    { name = "Artemy Shuvalov", email = "shuvalovartal@yandex.ru" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "aiogram>=3.31.0",
+    "aiohttp-socks>=0.12.0",
+    "asyncio>=4.0.0",
+    "pytest>=9.1.1",
+    "python-dotenv>=1.2.3",
+    "ruff>=0.16.9",
+]
+
+[project.scripts]
+butler = "butler:main"
+
+[build-system]
+requires = ["uv_build>=0.12.18,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "basedpyright>=1.40.1",
+]
