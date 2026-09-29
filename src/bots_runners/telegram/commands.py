@@ -1,7 +1,6 @@
 from io import BytesIO
 from aiogram.types import Message
 from src.transcriptors.interface import ITranscriptor
-from src.transcriptors.whisper.transcriptor import WhisperTranscriptor
 from aiogram import Bot
 
 
@@ -15,7 +14,7 @@ async def echo(message: Message) -> None:
 
 async def handle_voice(
     message: Message,
-    transcriptor: ITranscriptor = WhisperTranscriptor()
+    transcriptor: ITranscriptor
 ) -> None:
     # await message.answer("Ты отправил голосовое сообщение")
     bot = message.bot

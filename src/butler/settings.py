@@ -27,7 +27,7 @@ def load_settings(path: Path) -> Settings:
     bot_credetials = BOT_REGISTRY[bot_type].creds_class(
         **check_mapping(config_toml['bot_credetials'])
     )
-    
-    bot_runner = bot.runner_class(creds=bot_credetials, proxy_url=proxy_url)
+    tmp_dir = Path(check_str(config_toml['proxy_url']))
+    bot_runner = bot.runner_class(creds=bot_credetials, proxy_url=proxy_url, tmp_dir=tmp_dir)
 
     return Settings(bot_runner=bot_runner, proxy_url=proxy_url)

@@ -12,9 +12,9 @@ from src.transcriptors.interface import ITranscriptor
 
 
 class WhisperTranscriptor(ITranscriptor):
-    def __init__(self, model_size: str = "base", language: str = "ru") -> None:
+    def __init__(self, tmp_dir: Path, model_size: str = "base", language: str = "ru") -> None:
         # создаём директорию для симлинка и самого tmp
-        self.tmp_dir: Path = Path("/home/tomy/reps/butler/tmp") # TODO: почистить
+        self.tmp_dir: Path = tmp_dir
         bin_dir = self.tmp_dir / "bin"
         bin_dir.mkdir(parents=True, exist_ok=True)
 
